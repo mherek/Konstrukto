@@ -1,0 +1,2 @@
+# Konstrukto
+ Ljetni zadatak / Aplikacija
