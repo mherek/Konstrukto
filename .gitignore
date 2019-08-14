@@ -23,4 +23,8 @@
 hs_err_pid*
 
 # Klasa #
-*.classpath  *.gitattributes  *.project  *.settings
+Konstrukto/.classpath 
+Konstrukto/.gitattributes
+Konstrukto/.gitattributes
+Konstrukto/.project  
+Konstrukto/.settings
