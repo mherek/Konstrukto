@@ -1,8 +1,13 @@
 package herek.LjetniZadatak;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 public class Kontrola {
+
+	public static final String FORMAT_DATUMA = "dd.MM.yyyy HH:mm";
 
 	public static String unosOIB(String poruka) {
 		String oib;
@@ -39,6 +44,18 @@ public class Kontrola {
 				continue;
 			}
 			return s;
+		}
+	}
+
+	public static Date unosDatuma(String poruka) {
+		SimpleDateFormat df = new SimpleDateFormat(FORMAT_DATUMA);
+		while (true) {
+			try {
+				return df.parse(JOptionPane.showInputDialog(poruka));
+
+			} catch (Exception e) {
+				JOptionPane.showConfirmDialog(null, "Obavezan unso datuma u formatu : " + FORMAT_DATUMA);
+			}
 		}
 	}
 

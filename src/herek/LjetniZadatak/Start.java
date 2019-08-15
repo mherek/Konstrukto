@@ -1,36 +1,40 @@
 package herek.LjetniZadatak;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 public class Start {
-//	private Connection connection;
 
+	Desktop dt=Desktop.getDesktop();
 
 	public Start() {
-		radnici = new ArrayList<Radnik>();
-	//	connection = Baza.getConnection();
+		
+	Metode.cn=Baza.getConnection();
 
 		petlja: while (true) {
 			izbornik();
 			switch (Kontrola.unosInt("Odaberite radnju")) {
 			case 1:
-			unosOsobe();
+			Metode.unos();
 				break;
 			case 2:
-				izlistajOsobe();
+				//Metode.ispisi("");
 				break;
 			case 3:
-				izmjenaOsobe();
+			//	izmjenaOsobe();
 				break;
 			case 4:
-				//brisanjeOsobe();
+				Metode.brisanje();
 				break;
 			case 5:
-
+				gitera();
+				break;
+			case 6:
+				gitlink();
 				break;
 			case 7:
 				break petlja;
@@ -41,12 +45,23 @@ public class Start {
 
 	}
 
-//	private void brisanjeOsobe() {
-//		izlistajOsobe();
-//		radnici.remove(Kontrola.unosInt(" Unesite osobu koju zelite obrisai"));
-//
-//	}
+private void gitera() {
+		try {
+			dt.browse(new URI("https://github.com/mherek/Konstrukto/blob/master/konstrukto_era.png"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
+private void gitlink() {
+try {
+	dt.browse(new URI("https://github.com/mherek/Konstrukto"));
+} catch (Exception e) {
+	e.printStackTrace();
+}
+	
+}
 
 	private void izbornik() {
 		System.out.println("Konstrukto!");
