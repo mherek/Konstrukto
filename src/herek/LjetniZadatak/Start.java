@@ -22,10 +22,10 @@ public class Start {
 			Metode.unos();
 				break;
 			case 2:
-				//Metode.ispisi("");
+				Metode.prikaz();
 				break;
 			case 3:
-			//	izmjenaOsobe();
+			Metode.promjena();
 				break;
 			case 4:
 				Metode.brisanje();

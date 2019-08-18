@@ -14,7 +14,22 @@ public class Metode {
 	public static PreparedStatement ps;
 
 	public static void promjena() {
-
+		izlaz: while (true) {
+			System.out.println("\n 1. Radnik \t 2. Gradiliste \t 3. Dogadaj \n4. Izlaz");
+			switch (Kontrola.unosInt("Koju tablicu zelite mijenjati?")) {
+			case 1:
+				updateradnik();
+				break;
+			case 2:
+				updategradiliste();
+				break;
+			case 3:
+				updatedogadaj();
+				default:
+					JOptionPane.showMessageDialog(null, " Nevazeci broj");
+					break;
+			}
+	}
 	}
 
 	private static void updateradnik() {
@@ -32,12 +47,22 @@ public class Metode {
 			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno " + ps.executeUpdate());
 			PreparedStatement ps2 = cn.prepareStatement(" Update radnik set oib = ? where id = ? ");
 			ps2.setInt(2, i);
-			ps.setString(3, Kontrola.unosOIB("Unesite novi OIB"));
-			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno " + ps.executeUpdate());
+			String oib ;
+			while(true) {
+				oib=Kontrola.unosString(" Unesite oib");
+				if(Kontrola.unosOIB(oib)) {
+					ps.setString(3, oib);
+					break;}
+			}
 			PreparedStatement ps3 = cn.prepareStatement(" Update radnik set iban = ? where id = ?");
 			ps3.setInt(2, i);
-			ps.setString(4, Kontrola.unosIBAN(" Unesite novi IBAN"));
-			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno " + ps.executeUpdate());
+			String iban ;
+			while(true) {
+				iban=Kontrola.unosString(" Unesite oib");
+				if(Kontrola.unosIBAN(iban)) {
+					ps.setString(3, iban);
+					break;}
+			}
 			PreparedStatement ps4 = cn.prepareStatement("Update radnik set nadredeni = ? where id= ? ");
 			ps4.setInt(2, i);
 			ps4.setInt(5, Kontrola.unosInt("Unesite id nadredenog"));
@@ -70,34 +95,36 @@ public class Metode {
 	}
 
 	private static void updatedogadaj() {
-		int i,j;
+		int i, j;
 		try {
 			ispisi("Select * from dogadaj");
-			i=Kontrola.unosInt("Unesite broj tablice koju zelite mijenjati");
-			ps=cn.prepareStatement("Update dogadaj set vrijemepocetka = ?  where id = ?");
+			i = Kontrola.unosInt("Unesite broj tablice koju zelite mijenjati");
+			ps = cn.prepareStatement("Update dogadaj set vrijemepocetka = ?  where id = ?");
 			ps.setInt(2, i);
 			ps.setDate(1, (Date) Kontrola.unosDatuma("Unesite novo vrieme pocetka"));
 			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno" + ps.executeUpdate());
-			PreparedStatement ps1=cn.prepareStatement(" Update dogadaj set vrijemekraja = ? where id = ?");
+			PreparedStatement ps1 = cn.prepareStatement(" Update dogadaj set vrijemekraja = ? where id = ?");
 			ps.setInt(2, i);
 			ps.setDate(2, (Date) Kontrola.unosDatuma(" Unesite novo vrijeme kraja"));
 			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno" + ps.executeUpdate());
-			PreparedStatement ps3=cn.prepareStatement(" Update dogadaj set gradiliste = ? where id = ?");
+			PreparedStatement ps3 = cn.prepareStatement(" Update dogadaj set gradiliste = ? where id = ?");
 			ps.setInt(2, i);
 			ps.setString(3, Kontrola.unosString("Unesite novo gradiliste"));
 			JOptionPane.showMessageDialog(null, "Uspjesno promjenjeno" + ps.executeUpdate());
-		/*	PreparedStatement ps4=cn.prepareStatement("Update dogadaj set radnik= ? where id = ?");
-			ps.setInt(2, i);
-			j=Integer.parseInt(JOptionPane.showInputDialog("Unesite broj radnika na gradilistu"));
-			for(int a=0;a<j;) {
-				updateradnik();
-			}*/
+			/*
+			 * PreparedStatement
+			 * ps4=cn.prepareStatement("Update dogadaj set radnik= ? where id = ?");
+			 * ps.setInt(2, i); j=Integer.parseInt(JOptionPane.
+			 * showInputDialog("Unesite broj radnika na gradilistu")); for(int a=0;a<j;) {
+			 * updateradnik(); }
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
-		};
-		
+		}
+		;
+
 	}
-	
+
 	public static void unos() {
 		izlaz: while (true) {
 			System.out.println("\n 1. Radnik \t 2. Gradiliste \t 3. Dogadaj \n4. Izlaz");
@@ -109,8 +136,22 @@ public class Metode {
 							" Insert into radnik (ime, prezime, oib, iban, nadredeni) " + " values (?,?,?,?,?) ");
 					ps.setString(1, Kontrola.unosString(" Unesite ime "));
 					ps.setString(2, Kontrola.unosString(" Unesite prezime "));
-					ps.setString(3, Kontrola.unosOIB("Unesite oib"));
-					ps.setString(4, Kontrola.unosIBAN(" Unesite IBAN"));
+					String oib ;
+					while(true) {
+						oib=Kontrola.unosString(" Unesite oib");
+						if(Kontrola.unosOIB(oib)) {
+							ps.setString(3, oib);
+							break;}
+					}
+						String iban;
+						while(true) {
+							iban=Kontrola.unosString(" Unesite iban");
+							if(Kontrola.unosIBAN(iban)) {
+								ps.setString(4,iban);
+								break;
+							}
+						}
+				
 					ps.setInt(5, Kontrola.unosInt("Unesite ID nadredenog (default null)"));
 					JOptionPane.showMessageDialog(null, " Podaci uspjesno uneseni " + ps.executeUpdate());
 					ispisi(" Select * from radnik");
@@ -160,6 +201,39 @@ public class Metode {
 		}
 	}
 
+	public static void prikaz() {
+		
+		izlaz: while (true) {
+			System.out.println("\n 1. Radnik \t 2. Gradiliste \t 3. Dogadaj \n4. Izlaz");
+			 switch (Kontrola.unosInt("Koju tablicu zelite vidjeti?")) {
+			case 1:
+				try {
+					ispisi("Select * from radnik");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}break;
+			case 2:
+				try {
+					ispisi("Select * from gradiliste");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}break;
+			case 3:
+				try {
+					ispisi(" Select * from dogadaj");	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}break;
+			case 4:
+				break izlaz;
+				default:
+					JOptionPane.showMessageDialog(null, " Nevazeci broj");
+					break;
+				
+				
+		}
+	}
+	}
 	public static void brisanje() {
 		int delete;
 		izlaz: while (true) {
@@ -231,20 +305,20 @@ public class Metode {
 
 	}
 
-	public static void ispisi(String query) {
+	public static void ispisi(String upit) {
 		try {
-			PreparedStatement ps = cn.prepareStatement(query);
+			PreparedStatement ps = cn.prepareStatement(upit);
 			ResultSet rs = ps.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int columnnumber = rsmd.getColumnCount();
-			for (int i = 1; i < columnnumber; i++) {
-				System.out.print(rsmd.getColumnName(i));
+			for (int i = columnnumber + 1; i < columnnumber; i--) {
+				System.out.println(rsmd.getColumnName(i));
 			}
 			System.out.println("");
 			while (rs.next()) {
 				for (int j = 1; j < columnnumber; j++) {
 					if (j > 1) {
-						System.out.print(" / ");
+						System.out.println("");
 						System.out.println(rs.getString(j));
 					}
 					System.out.println("");

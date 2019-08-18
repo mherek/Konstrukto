@@ -1,30 +1,46 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# Klasa #
-Konstrukto/.classpath 
-Konstrukto/.gitattributes
-Konstrukto/.gitattributes
-Konstrukto/.project  
-Konstrukto/.settings/org.eclipse.jdt.core.prefs
+		Konstruko/.project
+		Konstruko/.settings/org.eclipse.jdt.core.prefs
+		*.ini
+		*.xml
+		.metadata/.plugins/org.eclipse.ui.intro/introstate
+		*.setup
+		*.log
+		*.dat
+		*.txt
+		*.db
+		.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+		*.index
+		*.xmi
+		*.prefs
+		*.snap
+		*.resources
+		*.zip
+		*.lock
+		.metadata/.mylyn/.taskListIndex/segments_1
+		Konstruko/.classpath
+		Konstruko/lib/mariadb-java-client-2.4.2.jar
+		Konstruko/bin/hlavati/ljetnizadatak/Start.class
+		.metadata/.plugins/com.genuitec.eclipse.devstyle/recent.json
+		.metadata/.plugins/com.genuitec.eclipse.monitor/myeclipse-usage.properties
+		.metadata/.plugins/com.genuitec.eclipse.ui.common.platform/color-definitions-fix.css
+		*.css
+		.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache
+		.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache
+		.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+		Konstruko/bin/hlavati/ljetnizadatak/Baza.class
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/5.png
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/6.png
+		.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/7.png
+		*.launch
+		*.png
+		/.metadata/
+		Konstruko/bin/hlavati/ljetnizadatak/KontroleZaUnos.class
+		/Konstruko/nbproject/private/
+		*.properties
+		*.mf
+		*.class
+		Konstruko/bin/lhlavati/ljetnizadatak/Crud.class
+		
